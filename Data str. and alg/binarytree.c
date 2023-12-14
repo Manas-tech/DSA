@@ -7,46 +7,36 @@ struct node{
     struct node* right;
 };
 
-struct node* createNode(int data){
+struct node* createnode(int data){
     struct node *n; 
     n = (struct node *) malloc(sizeof(struct node)); 
     n->data = data; 
     n->left = NULL; 
     n->right = NULL; 
-    return n;
+    return n; 
+}
+
+void show(struct  node* root){
+    if(root!=NULL){
+        printf("%d ", root->data);
+        show(root->left);
+        show(root->right);
+    }
 }
 
 int main(){
-    /*
-    // Constructing the root node
-    struct node *p;
-    p = (struct node *) malloc(sizeof(struct node));
-    p->data = 2;
-    p->left = NULL;
-    p->right = NULL;
-
+     
+    struct node *p=  createnode(1);
+    struct node *p1= createnode(2);
+    struct node *p2= createnode(3);
+    struct node *p3= createnode(4);
+    struct node *p4= createnode(5);
    
-    struct node *p1;
-    p1 = (struct node *) malloc(sizeof(struct node));
-    p->data = 1;
-    p1->left = NULL;
-    p1->right = NULL;
-
-    // Constructing the third node
-    struct node *p2;
-    p2 = (struct node *) malloc(sizeof(struct node));
-    p->data = 4;
-    p2->left = NULL;
-    p2->right = NULL;
-    */
-   
-  
-    struct node *p = createNode(2);
-    struct node *p1 = createNode(1);
-    struct node *p2 = createNode(4);
-
-  
     p->left = p1;
     p->right = p2;
+    p1->left = p3;
+    p1->right = p4;
+
+    show(p);
     return 0;
 }
